@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+
+p,
+body,
+h1 {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+* {
+  font-family: Titillium Web, 'Arial';
+}
+
+body{
+  background-color: rgb(74, 140, 220, 0.98);
+}
+
+.poke_section{
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.poke_name{
+  padding-top: 40px;
+}
+
+.btn_viewMore{
+  margin-left: 50%;
+  padding-bottom: 10px;
+}
+
+#goBulbapedia{
+  border-radius: 10px;
+  border: none;
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.poke_image{
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+  background-image: url(../img/Blastoise.png);
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: 55px;
+  background-color: rgba(152, 191, 239, 0.65);
+}
+
+.poke_description{
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 60%;
+  text-align: center;
+}
+
+.poke_moveset{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  /* height: 200px; */
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+}
+
+ul{
+  padding: 0;
+}
+
+li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30vw;
+}
+
+li::before{
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-image: url(../img/pokeball.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding-left: 25px;
+}
+
+button{
+  border-radius: 10px;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.poke_moveset p{
+  font-weight: bold;
+}
+
+.poke_addMoves{
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#selectMove{
+  margin-right: 3px;
+  border-radius: 10px;
+  border: none;
+  width: auto;
+  height: 30px;
+  cursor: pointer;
+}
+
+#addMove{
+  margin-left: 3px;
+  border-radius: 10px;
+  border: none;
+  width: 70px;
+  height: 30px;
+  cursor: pointer;
+}
