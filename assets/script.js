@@ -1,57 +1,64 @@
-console.log('Carrega o javascript aqui');
-
 // variaveis globais
 
 let moveSelecionado = '';
 let moveset = [];
-const movesDisponiveis = ["Tackle", "Tail Whip", "Bubble", "Water Gun", "Bite", "Withdraw", "Skull Bash", "Hydro Pump"];
+const movesDisponiveis = ['Tackle', 'Tail Whip', 'Bubble', 'Water Gun', 'Bite', 'Withdraw', 'Skull Bash', 'Hydro Pump'];
 
 // componentes
-const select = document.getElementById("selectMove")
-const btnAdd = document.getElementById("addMove")
+
+    const btnGoBulbapedia = document.getElementById('goBulbapedia')
+    const btnAdicionar = document.getElementById('addMove')
+    const selectMove = document.getElementById('selectMove')
+    const ul = document.getElementById('moves_list')
+    const movesetText = document.getElementById('movesetText')
 
 // add eventos
 
-btnAdd.addEventListener("click", adicionaGolpe)
+    btnGoBulbapedia.addEventListener('click', goToBulbapedia) 
+    btnAdicionar.addEventListener('click', adicionaGolpe)
 
 // métodos
 
-function carregaGolpes(){
-    let html = ""
-    movesDisponiveis.forEach((move) => {
-        html += `<option value="${move}">${move}</option>`
-    })
-    select.innerHTML = html
-}
-
-function goToBulbapedia() {
+function goToBulbapedia(){
     open("https://bulbapedia.bulbagarden.net/wiki/Blastoise_(Pok%C3%A9mon)")
 }
 
-function deletaGolpe() {
-    // btnDelete.parentNode.remove()
-}
+function deletaGolpe(event){
+    const id = event.path[1].id
+    const index = moveset.indexOf(id)
 
-function adicionaGolpe() {
-    moveSelecionado = select.value
-    let li = document.createElement("li")
-    li.id = moveSelecionado
-    li.innerHTML = `${moveSelecionado}<button type="button" class="botao" id="delete${moveSelecionado}">Deletar</button>`
-    let ul = document.querySelector("#moves_list")
-    ul.appendChild(li)
-
-    btnDelete = document.querySelectorAll(".botao")
-    btnDelete.forEach(function (a) {
-        a.addEventListener('click', function(){
-            a.parentNode.remove()
-        })
-    })
+    moveset.splice(index, 1)
     
-    let movesetText = document.getElementById('movesetText')
-    movesetText.style.display = 'none'
+    document.getElementById(id).remove()
 
+    if(moveset.length === 0) movesetText.style.display = 'block'
+     
 }
 
-// executa métodos
+function adicionaGolpe(){
+    moveSelecionado = selectMove.value
+
+    if(moveset.length === 4 || moveset.includes(moveSelecionado)) return;
+
+        const li = document.createElement('li')
+        li.id = moveSelecionado
+        li.innerHTML = `${moveSelecionado}<button type="button" id="delete${moveSelecionado}">deletar</button>`
+        ul.appendChild(li)
+        moveset.push(moveSelecionado)
+
+        movesetText.style.display = 'none'
+
+        const btnDeletar = document.getElementById(`delete${moveSelecionado}`)
+        btnDeletar.addEventListener('click', deletaGolpe)
+}
+
+function carregaGolpes(){
+    for(let i = 0; i < movesDisponiveis.length; i++){
+        const option = document.createElement('option')
+        option.id = `${movesDisponiveis[i]}`
+        option.innerText = `${movesDisponiveis[i]}`
+        selectMove.appendChild(option)
+    }
+}
 
 carregaGolpes()
